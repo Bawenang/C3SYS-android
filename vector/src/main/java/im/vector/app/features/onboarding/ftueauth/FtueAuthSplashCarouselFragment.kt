@@ -60,36 +60,16 @@ class FtueAuthSplashCarouselFragment :
     override fun onDestroyView() {
         tabLayoutMediator?.detach()
         tabLayoutMediator = null
-        views.splashCarousel.adapter = null
         super.onDestroyView()
     }
 
     private fun setupViews() {
-        val carouselAdapter = carouselController.adapter
-        views.splashCarousel.adapter = carouselAdapter
-        tabLayoutMediator = TabLayoutMediator(views.carouselIndicator, views.splashCarousel) { _, _ -> }
-                .also { it.attach() }
-
-        carouselController.setData(carouselStateFactory.create())
-
         val isAlreadyHaveAccountEnabled = vectorFeatures.isOnboardingAlreadyHaveAccountSplashEnabled()
-        views.loginSplashSubmit.apply {
-            setText(if (isAlreadyHaveAccountEnabled) CommonStrings.login_splash_create_account else CommonStrings.login_splash_submit)
-            debouncedClicks { splashSubmit(isAlreadyHaveAccountEnabled) }
-        }
+
         views.loginSplashAlreadyHaveAccount.apply {
             isVisible = isAlreadyHaveAccountEnabled
             debouncedClicks { alreadyHaveAnAccount() }
         }
-
-        if (buildMeta.isDebug || vectorPreferences.developerMode()) {
-            views.loginSplashVersion.isVisible = true
-            @SuppressLint("SetTextI18n")
-            views.loginSplashVersion.text = "Version : ${buildMeta.versionName}\n" +
-                    "Branch: ${buildMeta.gitBranchName} ${buildMeta.gitRevision}"
-            views.loginSplashVersion.debouncedClicks { navigator.openDebug(requireContext()) }
-        }
-        views.splashCarousel.registerAutomaticUntilInteractionTransitions()
     }
 
     private fun ViewPager2.registerAutomaticUntilInteractionTransitions() {
