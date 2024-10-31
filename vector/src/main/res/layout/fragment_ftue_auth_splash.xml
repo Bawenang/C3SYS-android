@@ -15,11 +15,12 @@
     <Space
         android:id="@+id/loginSplashSpace1"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="64dp"
         app:layout_constraintBottom_toTopOf="@id/loginSplashLogoContainer"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="spread_inside"
-        app:layout_constraintVertical_weight="4" />
+        app:layout_constraintVertical_weight="4"
+        tools:layout_editor_absoluteX="36dp" />
 
     <LinearLayout
         android:id="@+id/loginSplashLogoContainer"
@@ -40,25 +41,16 @@
             android:src="@drawable/c3sys_logo"
             android:transitionName="loginLogoTransition" />
 
-        <ImageView
-            android:id="@+id/logoType"
-            android:layout_width="wrap_content"
-            android:layout_height="44dp"
-            android:layout_marginTop="8dp"
-            android:contentDescription="@string/app_name"
-            android:src="@drawable/element_logotype"
-            app:tint="?colorSecondary"
-            tools:ignore="MissingPrefix" />
-
     </LinearLayout>
 
     <Space
         android:id="@+id/loginSplashSpace2"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="40dp"
         app:layout_constraintBottom_toTopOf="@id/loginSplashTitle"
         app:layout_constraintTop_toBottomOf="@id/loginSplashLogoContainer"
-        app:layout_constraintVertical_weight="1" />
+        app:layout_constraintVertical_weight="1"
+        tools:layout_editor_absoluteX="36dp" />
 
     <TextView
         android:id="@+id/loginSplashTitle"
@@ -173,26 +165,13 @@
         android:id="@+id/loginSplashSpace4"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/loginSplashSubmit"
         app:layout_constraintTop_toBottomOf="@id/loginSplashContent"
-        app:layout_constraintVertical_weight="2" />
-
-    <Button
-        android:id="@+id/loginSplashSubmit"
-        style="@style/Widget.Vector.Button.Login"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textAllCaps="true"
-        android:transitionName="loginSubmitTransition"
-        app:layout_constraintBottom_toTopOf="@id/loginSplashSpace5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/loginSplashSpace4"
-        tools:text="@string/login_splash_create_account" />
+        app:layout_constraintVertical_weight="2"
+        tools:layout_editor_absoluteX="36dp" />
 
     <Button
         android:id="@+id/loginSplashAlreadyHaveAccount"
-        style="@style/Widget.Vector.Button.Text.Login"
+        style="@style/Widget.Vector.Button.Login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/login_splash_already_have_account"
@@ -201,15 +180,15 @@
         app:layout_constraintBottom_toTopOf="@id/loginSplashSpace5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/loginSplashSubmit" />
+        app:layout_constraintTop_toBottomOf="@id/loginSplashSpace4" />
 
     <Space
         android:id="@+id/loginSplashSpace5"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/loginSplashSubmit"
-        app:layout_constraintVertical_weight="4" />
+        app:layout_constraintVertical_weight="4"
+        tools:layout_editor_absoluteX="36dp" />
 
     <TextView
         android:id="@+id/loginSplashVersion"
