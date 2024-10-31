@@ -18,6 +18,8 @@
 
     <color name="palette_element_green">#0DBD8B</color>
     <color name="palette_element_orange">#D9B072</color>
+    <color name="palette_cesys_dark_blue">#008DD6</color>
+    <color name="palette_cesys_light_blue">#E6F4F1</color>
     <color name="palette_white">#FFFFFF</color>
     <color name="palette_vermilion">#FF5B55</color>
     <!-- (unused) -->

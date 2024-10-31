@@ -5,8 +5,8 @@
     <style name="Theme.Vector.BottomSheetDialog.Light" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
         <item name="colorPrimary">@color/element_accent_light</item>
         <item name="colorOnPrimary">@color/palette_white</item>
-        <item name="colorSecondary">@color/palette_element_green</item>
-        <item name="colorOnSecondary">@color/palette_white</item>
+        <item name="colorSecondary">@color/palette_cesys_dark_blue</item>
+        <item name="colorOnSecondary">@color/palette_cesys_light_blue</item>
         <item name="colorSurface">@color/element_background_light</item>
         <item name="colorOnSurface">@color/element_content_primary_light</item>
         <item name="colorError">@color/element_alert_light</item>
@@ -19,8 +19,8 @@
     <style name="Theme.Vector.BottomSheetDialog.Dark" parent="Theme.MaterialComponents.BottomSheetDialog">
         <item name="colorPrimary">@color/element_accent_dark</item>
         <item name="colorOnPrimary">@color/palette_white</item>
-        <item name="colorSecondary">@color/palette_element_green</item>
-        <item name="colorOnSecondary">@color/palette_white</item>
+        <item name="colorSecondary">@color/palette_cesys_dark_blue</item>
+        <item name="colorOnSecondary">@color/palette_cesys_light_blue</item>
         <item name="colorSurface">@color/element_background_dark</item>
         <item name="colorOnSurface">@color/element_content_primary_dark</item>
         <item name="colorError">@color/element_alert_dark</item>
