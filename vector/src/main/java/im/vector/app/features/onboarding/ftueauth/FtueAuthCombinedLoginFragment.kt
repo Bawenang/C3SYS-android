@@ -58,7 +58,6 @@ class FtueAuthCombinedLoginFragment :
         super.onViewCreated(view, savedInstanceState)
         setupSubmitButton()
         views.loginRoot.realignPercentagesToParent()
-        views.editServerButton.debouncedClicks { viewModel.handle(OnboardingAction.PostViewEvent(OnboardingViewEvents.EditServerSelection)) }
         views.loginPasswordInput.setOnImeDoneListener { submit() }
         views.loginInput.setOnFocusLostListener(viewLifecycleOwner) {
             viewModel.handle(OnboardingAction.UserNameEnteredAction.Login(views.loginInput.content()))
@@ -122,35 +121,14 @@ class FtueAuthCombinedLoginFragment :
         when (state.selectedHomeserver.preferredLoginMode) {
             is LoginMode.SsoAndPassword -> {
                 showUsernamePassword()
-                renderSsoProviders(state.deviceId, state.selectedHomeserver.preferredLoginMode)
             }
             is LoginMode.Sso -> {
-                hideUsernamePassword()
-                renderSsoProviders(state.deviceId, state.selectedHomeserver.preferredLoginMode)
+                showUsernamePassword()
             }
             else -> {
                 showUsernamePassword()
-                hideSsoProviders()
             }
         }
-    }
-
-    private fun renderSsoProviders(deviceId: String?, loginMode: LoginMode) {
-        views.ssoGroup.isVisible = true
-        views.ssoButtonsHeader.isVisible = isUsernameAndPasswordVisible()
-        views.ssoButtons.render(loginMode, SocialLoginButtonsView.Mode.MODE_CONTINUE) { id ->
-            viewModel.fetchSsoUrl(
-                    redirectUrl = SSORedirectRouterActivity.VECTOR_REDIRECT_URL,
-                    deviceId = deviceId,
-                    provider = id,
-                    action = SSOAction.LOGIN
-            )?.let { openInCustomTab(it) }
-        }
-    }
-
-    private fun hideSsoProviders() {
-        views.ssoGroup.isVisible = false
-        views.ssoButtons.ssoIdentityProviders = null
     }
 
     private fun hideUsernamePassword() {
