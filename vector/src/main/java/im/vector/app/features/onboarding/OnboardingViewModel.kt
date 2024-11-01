@@ -84,8 +84,7 @@ class OnboardingViewModel @AssistedInject constructor(
         private val vectorOverrides: VectorOverrides,
         private val registrationActionHandler: RegistrationActionHandler,
         private val sdkIntProvider: BuildVersionSdkIntProvider,
-        private val configureAndStartSessionUseCase: ConfigureAndStartSessionUseCase,
-        mdmService: MdmService,
+        private val configureAndStartSessionUseCase: ConfigureAndStartSessionUseCase
 ) : VectorViewModel<OnboardingViewState, OnboardingAction, OnboardingViewEvents>(initialState) {
 
     @AssistedFactory
@@ -113,7 +112,6 @@ class OnboardingViewModel @AssistedInject constructor(
     }
 
     private val matrixOrgUrl = stringProvider.getString(im.vector.app.config.R.string.matrix_org_server_url).ensureTrailingSlash()
-    private val defaultHomeserverUrl = mdmService.getData(MdmData.DefaultHomeserverUrl, matrixOrgUrl)
 
     private val registrationWizard: RegistrationWizard
         get() = authenticationService.getRegistrationWizard()
@@ -236,29 +234,16 @@ class OnboardingViewModel @AssistedInject constructor(
     private fun continueToPageAfterSplash(onboardingFlow: OnboardingFlow) {
         when (onboardingFlow) {
             OnboardingFlow.SignUp -> {
-                _viewEvents.post(
-                        if (vectorFeatures.isOnboardingUseCaseEnabled()) {
-                            OnboardingViewEvents.OpenUseCaseSelection
-                        } else {
-                            OnboardingViewEvents.OpenServerSelection
-                        }
-                )
-            }
-            OnboardingFlow.SignIn -> when {
-                vectorFeatures.isOnboardingCombinedLoginEnabled() -> {
-                    handle(OnboardingAction.HomeServerChange.SelectHomeServer(deeplinkOrDefaultHomeserverUrl()))
-                }
-                else -> openServerSelectionOrDeeplinkToOther()
+                handle(OnboardingAction.HomeServerChange.SelectHomeServer(deeplinkOrDefaultHomeserverUrl()))
             }
 
-            OnboardingFlow.SignInSignUp -> openServerSelectionOrDeeplinkToOther()
-        }
-    }
+            OnboardingFlow.SignIn -> {
+                handle(OnboardingAction.HomeServerChange.SelectHomeServer(deeplinkOrDefaultHomeserverUrl()))
+            }
 
-    private fun openServerSelectionOrDeeplinkToOther() {
-        when (loginConfig) {
-            null -> _viewEvents.post(OnboardingViewEvents.OpenServerSelection)
-            else -> handleHomeserverChange(OnboardingAction.HomeServerChange.SelectHomeServer(deeplinkOrDefaultHomeserverUrl()), ServerType.Other)
+            OnboardingFlow.SignInSignUp -> {
+                handle(OnboardingAction.HomeServerChange.SelectHomeServer(deeplinkOrDefaultHomeserverUrl()))
+            }
         }
     }
 
@@ -450,7 +435,7 @@ class OnboardingViewModel @AssistedInject constructor(
         }
     }
 
-    private fun deeplinkOrDefaultHomeserverUrl() = loginConfig?.homeServerUrl?.ensureProtocol() ?: defaultHomeserverUrl
+    private fun deeplinkOrDefaultHomeserverUrl() = matrixOrgUrl
 
     private fun resetUseCase() {
         setState { copy(useCase = null) }
@@ -706,12 +691,7 @@ class OnboardingViewModel @AssistedInject constructor(
         when {
             error.isHomeserverUnavailable() && applicationContext.inferNoConnectivity(sdkIntProvider) -> _viewEvents.post(OnboardingViewEvents.Failure(error))
             isUnableToSelectServer(error, trigger) -> {
-                withState { state ->
-                    when {
-                        canEditServerSelectionError(state) -> handle(OnboardingAction.PostViewEvent(OnboardingViewEvents.EditServerSelection))
-                        else -> _viewEvents.post(OnboardingViewEvents.Failure(error))
-                    }
-                }
+                _viewEvents.post(OnboardingViewEvents.Failure(error))
             }
             error.isUnrecognisedCertificate() -> {
                 _viewEvents.post(OnboardingViewEvents.UnrecognisedCertificateFailure(trigger, error as Failure.UnrecognizedCertificateFailure))
@@ -719,10 +699,6 @@ class OnboardingViewModel @AssistedInject constructor(
             else -> _viewEvents.post(OnboardingViewEvents.Failure(error))
         }
     }
-
-    private fun canEditServerSelectionError(state: OnboardingViewState) =
-            (state.onboardingFlow == OnboardingFlow.SignIn && vectorFeatures.isOnboardingCombinedLoginEnabled()) ||
-                    (state.onboardingFlow == OnboardingFlow.SignUp && vectorFeatures.isOnboardingCombinedRegisterEnabled())
 
     private fun isUnableToSelectServer(error: Throwable, trigger: OnboardingAction.HomeServerChange) =
             trigger is OnboardingAction.HomeServerChange.SelectHomeServer && error.isHomeserverConnectionError()
@@ -812,7 +788,7 @@ class OnboardingViewModel @AssistedInject constructor(
         return loginConfig?.homeServerUrl
     }
 
-    fun getDefaultHomeserverUrl() = defaultHomeserverUrl
+    fun getDefaultHomeserverUrl() = matrixOrgUrl
 
     fun fetchSsoUrl(redirectUrl: String, deviceId: String?, provider: SsoIdentityProvider?, action: SSOAction): String? {
         setState {

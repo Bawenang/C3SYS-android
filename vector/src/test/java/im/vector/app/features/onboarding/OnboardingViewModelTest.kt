@@ -1089,8 +1089,7 @@ class OnboardingViewModelTest {
                 FakeVectorOverrides(),
                 fakeRegistrationActionHandler.instance,
                 TestBuildVersionSdkIntProvider().also { it.value = Build.VERSION_CODES.O },
-                fakeConfigureAndStartSessionUseCase,
-                NoOpMdmService()
+                fakeConfigureAndStartSessionUseCase
         ).also {
             viewModel = it
             initialState = state
