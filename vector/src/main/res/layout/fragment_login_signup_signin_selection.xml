@@ -38,6 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="27dp"
                 android:textColor="?vctr_content_primary"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/loginSignupSigninServerIcon"
                 app:layout_goneMarginTop="0dp"
@@ -51,6 +52,7 @@
                 android:layout_marginTop="27dp"
                 android:gravity="start"
                 android:textColor="?vctr_content_secondary"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/loginSignupSigninTitle"
@@ -105,12 +107,14 @@
                     android:layout_marginTop="27dp"
                     android:gravity="center"
                     android:text="@string/login_social_continue"
-                    android:textColor="?vctr_content_secondary" />
+                    android:textColor="?vctr_content_secondary"
+                    android:visibility="gone" />
 
                 <im.vector.app.features.login.SocialLoginButtonsView
                     android:id="@+id/loginSignupSigninSocialLoginButtons"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     tools:signMode="continue_with" />
 
             </LinearLayout>

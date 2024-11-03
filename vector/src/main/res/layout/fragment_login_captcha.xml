@@ -18,6 +18,7 @@
         <ImageView
             style="@style/LoginLogo"
             android:layout_marginBottom="8dp"
+            android:src="@drawable/c3sys_logo"
             tools:ignore="ContentDescription" />
 
         <TextView
@@ -27,7 +28,8 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:text="@string/auth_recaptcha_message"
-            android:textColor="?vctr_content_secondary" />
+            android:textColor="?vctr_content_secondary"
+            android:visibility="invisible" />
 
         <WebView
             android:id="@+id/loginCaptchaWevView"

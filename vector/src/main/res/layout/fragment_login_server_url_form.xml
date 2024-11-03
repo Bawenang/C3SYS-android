@@ -13,6 +13,7 @@
 
             <ImageView
                 style="@style/LoginLogo"
+                android:src="@drawable/c3sys_logo"
                 tools:ignore="ContentDescription" />
 
             <!-- Displayed only for EMS -->
@@ -22,6 +23,7 @@
                 android:layout_height="wrap_content"
                 android:importantForAccessibility="no"
                 android:src="@drawable/ic_logo_element_matrix_services"
+                android:visibility="gone"
                 app:tint="?vctr_content_primary"
                 tools:ignore="MissingPrefix" />
 
@@ -32,6 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="27dp"
                 android:textColor="?vctr_content_primary"
+                android:visibility="gone"
                 tools:text="@string/login_connect_to_modular" />
 
             <TextView
@@ -42,6 +45,7 @@
                 android:layout_marginTop="@dimen/layout_vertical_margin"
                 android:gravity="start"
                 android:textColor="?vctr_content_secondary"
+                android:visibility="gone"
                 tools:text="@string/login_server_url_form_modular_text" />
 
             <TextView
@@ -51,7 +55,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="@string/login_server_modular_learn_more"
-                android:textColor="?colorPrimary" />
+                android:textColor="?colorPrimary"
+                android:visibility="gone" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/loginServerUrlFormHomeServerUrlTil"
