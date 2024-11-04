@@ -13,6 +13,7 @@
 
             <ImageView
                 style="@style/LoginLogo"
+                android:src="@drawable/c3sys_logo"
                 tools:ignore="ContentDescription" />
 
             <TextView
