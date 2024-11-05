@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="?android:colorBackground"
     android:paddingStart="@dimen/layout_horizontal_margin"
-    android:paddingEnd="@dimen/layout_horizontal_margin">
+    android:paddingEnd="@dimen/layout_horizontal_margin"
+    android:visibility="visible">
 
     <androidx.constraintlayout.helper.widget.Flow
         android:id="@+id/flowMain"
@@ -37,31 +38,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:importantForAccessibility="no"
-        android:src="@drawable/element_logo_stars" />
+        android:src="@drawable/c3sys_logo" />
 
     <TextView
         android:id="@+id/title"
         style="@style/Widget.Vector.TextView.Title.Medium"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
         android:gravity="center"
         android:text="@string/analytics_opt_in_title"
-        android:textColor="?vctr_content_primary" />
+        android:textColor="?vctr_content_primary"
+        android:visibility="invisible"
+        tools:visibility="invisible" />
 
     <TextView
         android:id="@+id/subtitle"
         style="@style/Widget.Vector.TextView.Body"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:gravity="center"
         android:textColor="?vctr_content_secondary"
-        tools:text="@string/analytics_opt_in_content" />
+        android:visibility="invisible"
+        tools:text="@string/analytics_opt_in_content"
+        tools:visibility="invisible" />
 
     <View
         android:id="@+id/separator"
@@ -76,6 +75,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:visibility="invisible"
         app:constraint_referenced_ids="list_item_1,list_item_2,list_item_3"
         app:flow_verticalGap="12dp" />
 
@@ -131,7 +131,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:minHeight="@dimen/layout_touch_size"
-        android:text="@string/action_enable" />
+        android:text="@string/action_enable"
+        android:visibility="invisible" />
 
     <Button
         android:id="@+id/later"

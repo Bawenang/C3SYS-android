@@ -7,7 +7,9 @@
     android:layout_height="match_parent"
     android:background="?android:colorBackground">
 
-    <androidx.core.widget.NestedScrollView style="@style/LoginFormScrollView">
+    <androidx.core.widget.NestedScrollView
+        style="@style/LoginFormScrollView"
+        android:layout_height="637dp">
 
         <LinearLayout style="@style/LoginFormContainer">
 
@@ -109,7 +111,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
-                    android:text="@string/auth_forgot_password" />
+                    android:text="@string/auth_forgot_password"
+                    android:visibility="invisible" />
 
                 <Button
                     android:id="@+id/loginSubmit"
@@ -130,7 +133,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:visibility="gone"
+                android:visibility="invisible"
                 tools:visibility="visible">
 
                 <TextView

@@ -393,7 +393,7 @@
     <string name="action_unpublish">Unpublish</string>
     <string name="action_enable">Enable</string>
     <string name="action_disable">Disable</string>
-    <string name="action_not_now">Not now</string>
+    <string name="action_not_now">Close</string>
     <string name="action_try_it_out">Try it out</string>
     <string name="action_agree">Agree</string>
     <string name="action_change">"Change"</string>
@@ -1086,7 +1086,7 @@
 
     <string name="analytics_opt_in_title">Help improve ${app_name}</string>
     <!-- The template will be replaced by the value of the resource analytics_opt_in_content_link -->
-    <string name="analytics_opt_in_content">Help us identify issues and improve ${app_name} by sharing anonymous usage data. To understand how people use multiple devices, we’ll generate a random identifier, shared by your devices.\n\nYou can read all our terms %s.</string>
+    <string name="analytics_opt_in_content">Help us identify issues and improve ${app_name}</string>
     <string name="analytics_opt_in_content_link">here</string>
     <string name="analytics_opt_in_list_item_1">We <b>don\'t</b> record or profile any account data</string>
     <string name="analytics_opt_in_list_item_2">We <b>don\'t</b> share information with third parties</string>

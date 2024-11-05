@@ -2223,7 +2223,7 @@ Di masa mendatang proses verifikasi ini akan dimutakhirkan.</string>
     <string name="shortcut_disabled_reason_room_left">Ruangannya telah ditinggalkan!</string>
     <string name="identity_server_consent_dialog_content_question">Apakah Anda setuju untuk mengirimkan info ini\?</string>
     <string name="identity_server_consent_dialog_content_3">Untuk menemukan kontak yang sudah ada, Anda harus mengirim info kontak (email dan nomor telepon) ke server identitas Anda. Kami hash data Anda sebelum mengirim demi privasi.</string>
-    <string name="action_not_now">Nanti</string>
+    <string name="action_not_now">Tutup</string>
     <string name="delete_poll_dialog_content">Apakah Anda yakin untuk menghapus poll ini\? Anda tidak akan dapat memulihkannya setelah dihapus.</string>
     <string name="delete_poll_dialog_title">Hapus poll</string>
     <string name="poll_end_room_list_preview">Poll berakhir</string>
@@ -2259,9 +2259,7 @@ Di masa mendatang proses verifikasi ini akan dimutakhirkan.</string>
     <string name="analytics_opt_in_list_item_2">Kami <b>tidak</b> membagikan informasi ini dengan pihak ketiga</string>
     <string name="analytics_opt_in_list_item_1">Kami <b>tidak</b> merekam atau memprofil data akun apa pun</string>
     <string name="analytics_opt_in_content_link">di sini</string>
-    <string name="analytics_opt_in_content">Bantu kami mengidentifikasi masalah-masalah dan membuat ${app_name} lebih baik dengan membagikan data penggunaan anonim. Untuk memahami bagaimana orang-orang menggunakan beberapa perangkat-perangkat, kami akan membuat pengenal acak, yang dibagikan oleh perangkat Anda.
-\n
-\nAnda dapat membaca semua kebijakan kami %s.</string>
+    <string name="analytics_opt_in_content">Bantu kami mengidentifikasi masalah-masalah dan membuat ${app_name} lebih baik</string>
     <string name="analytics_opt_in_title">Bantu buat ${app_name} lebih baik</string>
     <string name="action_enable">Aktifkan</string>
     <string name="restart_the_application_to_apply_changes">Mulai ulang aplikasi ini untuk menerapkan perubahan.</string>
