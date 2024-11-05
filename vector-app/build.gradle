@@ -252,6 +252,9 @@ android {
             if (project.hasProperty("coverage")) {
                 testCoverageEnabled = project.coverage == "true"
             }
+            ndk{
+                debugSymbolLevel 'FULL'
+            }
         }
 
         release {
@@ -264,6 +267,9 @@ android {
                 obfuscate false
                 optimizeCode true
                 proguardFiles 'proguard-rules.pro'
+            }
+            ndk{
+                debugSymbolLevel 'FULL'
             }
             // signingConfig signingConfigs.release
         }
